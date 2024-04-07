@@ -1,0 +1,16 @@
+<html>  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <select ng-model="selectedCity" ng-options="x for x in cities">
+        </select>
+        
+     </div>
+        
+        <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.cities = ["Lucknow", "Delhi", "Noida","Kanpur"];
+        });
+        </script> 
+</html>

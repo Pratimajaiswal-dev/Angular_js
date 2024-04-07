@@ -1,0 +1,169 @@
+Angular Intro -Misko hevery and Adam Abraons 
+Expression 
+Modules -App defines
+Model 
+Databinding ->ng-bind() {{}} Expression
+Controllers
+
+Directives=> is extended html attribute like in js attributes..
+like in <a href=""></a>
+
+same in angular with ng-prefix used directives in angular.
+ng-app  =>Initialize the application
+ng-init  =>initialize the app Data 
+ng-model  =>Bind value of html controls.
+ng-repeat =>iterate over all array and object data.
+ng-click =>define myfun() and in ctrl
+
+ $scope.myfun()= function(){
+   count++;
+}
+
+Dropdown using selected(ng-repeat and ng-options)
+===================================================
+
+<select>
+  <option ng-repeat="x in names">{{x}}</option>
+</select>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+<select ng-model="selectedName" ng-options="x for x in names"></select>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.names = ["Emil", "Tobias", "Linus"];
+});
+</script>
+
+ng-show =>show specified HTML element if the expression evaluates to true, otherwise the HTML element is hidden. 
+<input type="checkbox" ng-model="myVar">
+ 
+<div ng-show="myVar">
+<h1>Hello</h1>
+<p><Welcome to ng-show directve</p>
+</div>
+
+fiter=>  {{"x in names | filter:'i'"}}  {{ x }}
+filter => Filter
+ <li ng-repeat="x in names | filter:test">
+    {{ x }}
+</li>
+
+$even ,$odd ,$index.
+
+Angular js Tables:
+
+<tr ng-repeat="emps in employees | filter : search">
+
+<li ng-repeat="x in names | filter : 'i'">
+
+<tr ng-repeat="emps in Users | filter:{'name' : search}">
+
+
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+
+<table>
+  <tr ng-repeat="x in names">
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country | uppercase }}</td>
+  </tr>
+</table>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+    $http.get("customers.php")
+    .then(function (response) {$scope.names = response.data.records;});
+});
+</script>
+
+
+$even ,$odd ,$index.
+
+
+table create with created index used of $index.
+ <td>{{ $index + 1 }}</td>
+ 
+
+
+
+
+
+ 
+
+
+
+
+########################################################
+
+<div ng-app="myApp" ng-controller="namesCtrl">
+
+<ul>
+  <li ng-repeat="x in names | filter : 'i'">
+    {{ x }}
+  </li>
+</ul>
+
+</div>
+
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        'Jani',
+        'Carl',
+        'Margareth',
+        'Hege',
+        'Joe',
+        'Gustav',
+        'Birgit',
+        'Mary',
+        'Kai'
+    ];
+});
+</script>
+
+######################################
+
+
+<div ng-app="myApp" ng-controller="namesCtrl">
+
+<p>Type a letter in the input field:</p>
+
+<p><input type="text" ng-model="test"></p>
+
+<ul>
+  <li ng-repeat="x in names | filter:test">
+    {{ x }}
+  </li>
+</ul>
+
+</div>
+
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        'Jani',
+        'Carl',
+        'Margareth',
+        'Hege',
+        'Joe',
+        'Gustav',
+        'Birgit',
+        'Mary',
+        'Kai'
+    ];
+});
+</script>
+
+<p>The list will only consists of names matching the filter.</p>
+
+
+</body>
+</html>
+

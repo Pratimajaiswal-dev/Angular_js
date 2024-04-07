@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Add id using $ index</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+
+    <script>
+        angular.module("myApp", [])
+            .controller('myController', ['$scope', function ($scope) {
+    
+                // JSON ARRAY OBJECT.
+                $scope.names =
+                [
+                    {'name': 'Alpha', 'age': 37 },
+                    {'name': 'Bravo', 'age': 27 },
+                    {'name': 'Charlie', 'age':29},
+                    {'name': 'Delta', 'age': 19 },
+                    {'name': 'Echo', 'age': 32 },
+                    {'name': 'Bravo', 'age': 20 },
+                    {'name': 'Delta', 'age': 19 }
+                ]
+            } ]);
+    </script>
+
+    <style>
+        div, input{
+            font:15px Tahoma;
+            margin:10px;
+        }
+        input {
+            padding:5px 7px;
+        }
+        table, th, td {
+            border:solid 1px #CCC;
+            padding:1px 3px;
+            font:15px Tahoma;
+        }
+        th {
+            font-weight:bold;
+        }
+    </style>
+    </head>
+    <body>
+        <div ng-app="myApp" ng-controller="myController">
+        <input type="text" ng-model="search" placeholder="Search here by age.."/>
+  <table>
+    <thead>
+        <th>Id ($index)</th>
+        <th>Name</th>
+        <th>Age</th>
+         
+    </thead>
+    <tbody>
+        <!-- <tr ngRepeat="name in names | filter : searchText"></tr> -->
+        <tr ng-repeat="name in names | filter:{'age' : search}">
+        <td>{{$index+1}}</td> 
+        <td>{{name.name}}</td>
+        <td>{{name.age}}</td> 
+    </tbody>
+  </table>
+</div>
+    </body>
+</html>

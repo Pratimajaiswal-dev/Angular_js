@@ -1,0 +1,15 @@
+  Table scrollbars
+
+  <div style="width:100%;float:left">
+        <div class="scrollbar-dynamic" id="cityTree" data-jquery-scrollbar="jqueryScrollbarOptions">
+            <div style="height:300px; float:left">
+
+		//here code for data wih scrollbars......
+                <ul class="list-unstyled collapselist">
+                    <li id="{{obj.strRegionId}}" ng-click="FilterOnCity(obj)" ng-repeat="obj in allCity|filter:statecityBox"><span>{{obj.regionName}} </span></li>
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
